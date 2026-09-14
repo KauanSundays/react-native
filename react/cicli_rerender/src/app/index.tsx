@@ -9,7 +9,7 @@ import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { usePlayers } from '@/hooks/usePlayers';
 import { PlayerCard } from '@/components/PlayerCard';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -65,13 +65,25 @@ export default function HomeScreen() {
     })
   }, []);
 
+  const filteredPlayers = useMemo(() => {
+    if (!search.trim()) {
+      return players;
+    }
+
+    const searchLower = search.toLowerCase();
+
+    return players.filter((player) => {
+      return player.name.toLowerCase().includes(searchLower)
+    });
+  }, [players, search])
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <TextInput value={search} onChangeText={setSearch} placeholder="Pesquisar jogador...">
 
       </TextInput>
       <FlatList
-      data={players}
+      data={filteredPlayers}
       keyExtractor={item => String(item.id)}
       numColumns={2}
       columnWrapperStyle={{ justifyContent: 'space-between', gap: 12 }}
