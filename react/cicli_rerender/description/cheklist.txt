@@ -33,8 +33,8 @@
 * [ x ] Consumo do Custom Hook: `const { players, loading, error } = usePlayers()`.
 * [ x ] Estado local `search` (string) conectado ao `TextInput`.
 * [ x ] Estado local `myTeam` (`string[]`) guardando os IDs dos jogadores contratados.
-* [ ] `useMemo` para `filteredPlayers`: filtrando a lista por nome com `.filter()`.
-* [ ] `useMemo` para `totalCost`: calculando o custo total do time atual com `.reduce()`.
+* [ x ] `useMemo` para `filteredPlayers`: filtrando a lista por nome com `.filter()`.
+* [ x ] `useMemo` para `totalCost`: calculando o custo total do time atual com `.reduce()`.
 * [ ] `useCallback` para a função `handleToggleDraft`: alterando o estado `myTeam` com atualização funcional (`prev => ...`) e Spread Operator.
 * [ ] Header com o Painel do GM (Total de contratados e Folha Salarial).
 * [ ] Renderização da lista através do `FlatList`.

@@ -33,6 +33,7 @@ function getDevMenuHint() {
 
 export default function HomeScreen() {
   const [draftedIds, setDraftedIds] = useState<number[]>([]);
+  const [total, useTotal] = useState(0);
   const { players, loading, error } = usePlayers();
   const [ search, setSearch] = useState('');
 
@@ -77,6 +78,18 @@ export default function HomeScreen() {
     });
   }, [players, search])
 
+  const totalCost = useMemo(() => {
+    const draftedPlayers = players.filter((player) => draftedIds.includes(player.id))
+
+    const total = draftedPlayers.reduce((acc, player) => {
+      return acc + player.price;
+    }, 0)
+
+    return total
+
+
+  }, [draftedIds, players])
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <TextInput value={search} onChangeText={setSearch} placeholder="Pesquisar jogador...">
@@ -96,6 +109,7 @@ export default function HomeScreen() {
       )
       }/> 
       <Text>IDS do meu time: {draftedIds.join(', ')}</Text>
+      <Text>Valor Total do time: {totalCost}</Text>
     </SafeAreaView>
   );
 }
