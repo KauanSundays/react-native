@@ -92,6 +92,19 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <View style={styles.header}>
+        <ThemedText type="title">Painel do GM</ThemedText>
+        <View style={styles.statsRow}>
+          <View style={styles.statBox}>
+            <ThemedText type="small">Contratados</ThemedText>
+            <ThemedText type="subtitle">0</ThemedText>
+          </View>
+          <View style={styles.statBox}>
+            <ThemedText type="small">Folha Salarial</ThemedText>
+            <ThemedText type="subtitle">R$ 0</ThemedText>
+          </View>
+        </View>
+      </View>
       <TextInput value={search} onChangeText={setSearch} placeholder="Pesquisar jogador...">
 
       </TextInput>
@@ -149,5 +162,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,
+  },
+  header: {
+    padding: Spacing.three,
+    gap: Spacing.two,
+  },
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: Spacing.two,
+  },
+  statBox: {
+    flex: 1,
+    padding: Spacing.two,
+    borderRadius: 8,
+    backgroundColor: '#f2f2f2',
+    alignItems: 'center',
   },
 });
