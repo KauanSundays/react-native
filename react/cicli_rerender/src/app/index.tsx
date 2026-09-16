@@ -97,11 +97,13 @@ export default function HomeScreen() {
         <View style={styles.statsRow}>
           <View style={styles.statBox}>
             <ThemedText type="small">Contratados</ThemedText>
-            <ThemedText type="subtitle">0</ThemedText>
+            <ThemedText type="subtitle">{draftedIds.length}</ThemedText>
           </View>
           <View style={styles.statBox}>
             <ThemedText type="small">Folha Salarial</ThemedText>
-            <ThemedText type="subtitle">R$ 0</ThemedText>
+            <ThemedText type="subtitle">
+              R$ {totalCost.toLocaleString('pt-BR')}
+            </ThemedText>
           </View>
         </View>
       </View>
